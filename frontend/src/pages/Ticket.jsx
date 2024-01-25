@@ -5,7 +5,7 @@ import BackButton from '../components/BackButton'
 import Spinner from '../components/Spinner'
 import { useParams, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { getNotes, reset as notesReset } from '../features/notes/notesSlice'
+import { getNotes, createNote, reset as notesReset } from '../features/notes/notesSlice'
 import NoteItem from '../components/NoteItem'
 import Modal from "react-modal"
 import { motion } from "framer-motion"
@@ -67,7 +67,7 @@ const Ticket = () => {
 
     const handleNoteSubmit = (e) => {
         e.preventDefault()
-        console.log("Submit")
+        dispatch(createNote({ noteText, ticketId }))
         closeModal()
         setNoteText("")
     }
